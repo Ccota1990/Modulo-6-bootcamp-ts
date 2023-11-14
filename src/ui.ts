@@ -3,6 +3,7 @@ import{
     resetPuntuacion,
     sumarPuntuacion,
 } from "./modelo"
+
 import { dameCarta } from "./motor";
 
 
@@ -59,34 +60,24 @@ export const muestraCarta = (url: string) =>{
 
 export const comprobarPuntuacion =() =>{
     if(puntuacionInicial>7.5){
-        let boton = document.getElementById("pedirCarta")
-        if(boton  !== null && boton!== undefined && boton instanceof HTMLButtonElement){
-            boton.disabled = true 
-        };
-        const resultado = document.getElementById ("resultado")
-        if(resultado !== null && resultado !== undefined && resultado instanceof HTMLElement) {
-            resultado.innerHTML = "¡¡Game over!!"
-        }
-        const botonNuevaPartida = document.getElementById("nuevaPartida")
-        if(botonNuevaPartida !== null && botonNuevaPartida !== undefined && botonNuevaPartida instanceof HTMLButtonElement){
-            botonNuevaPartida.style.visibility="visible";
-        }
+        acabarPartida("¡¡Game over!!")
     }
     
     if(puntuacionInicial===7.5){
-        let boton = document.getElementById("pedirCarta")
-        if(boton !== null && boton !== undefined && boton instanceof HTMLButtonElement){
-            boton.disabled = true 
-        };
-        const resultado = document.getElementById ("resultado")
-        if(resultado !== null && resultado !== undefined && resultado instanceof HTMLElement) {
-            resultado.innerHTML = "¡Lo has clavado! ¡Enhorabuena!"
-        }
-        const botonNuevaPartida = document.getElementById("nuevaPartida")
-        if(botonNuevaPartida !== null && botonNuevaPartida !== undefined && botonNuevaPartida instanceof HTMLButtonElement){
-            botonNuevaPartida.style.visibility="visible";
-        }
+        acabarPartida("¡Lo has clavado! ¡Enhorabuena!")
     }
+    
+};
+const acabarPartida = (mensaje : string) => {
+    let boton = document.getElementById("pedirCarta")
+    if(boton  !== null && boton!== undefined && boton instanceof HTMLButtonElement){
+        boton.disabled = true 
+    };
+    const resultado = document.getElementById ("resultado")
+    if(resultado !== null && resultado !== undefined && resultado instanceof HTMLElement) {
+        resultado.innerHTML = mensaje
+    }
+    modificarEstadoBoton("visible")
     
 };
 
@@ -127,24 +118,35 @@ export const mePlanto = () => {
     modificarEstadoBoton("visible"); 
 };
 
-export const nuevaPartida = () =>{
-    let cartaElement = document.getElementById("carta") 
-    let puntuacion = document.getElementById("puntos")
-    let botonPedirCarta = document.getElementById("pedirCarta")
-    let resultado = document.getElementById ("resultado")
-
+const resetCarta = () => {
+    let cartaElement = document.getElementById("carta")
     if(cartaElement !== null && cartaElement !== undefined && cartaElement instanceof HTMLImageElement){
         cartaElement.src = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
     }
-    if(puntuacion !== null && puntuacion !== undefined && puntuacion instanceof HTMLElement){
-        puntuacion.innerHTML = "0"
-        resetPuntuacion()
-    }
+
+};
+
+const modificarBotonPedirCarta = () =>{
+    let botonPedirCarta = document.getElementById("pedirCarta")
     if(botonPedirCarta !== null && botonPedirCarta !== undefined && botonPedirCarta instanceof HTMLButtonElement){
         botonPedirCarta.disabled=false
     }
-    modificarEstadoBoton("hidden")
+};
+
+const resetMensaje =() =>{
+    let resultado = document.getElementById ("resultado")
     if(resultado !== null && resultado !== undefined && resultado instanceof HTMLElement){
-        resultado.innerHTML = ""
+       resultado.innerHTML = ""
     }
 };
+
+
+export const nuevaPartida = () =>{ 
+    resetPuntuacion()
+    resetCarta()
+    modificarBotonPedirCarta()
+    modificarEstadoBoton("hidden")
+    resultados()
+    resetMensaje()
+};
+

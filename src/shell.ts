@@ -14,7 +14,7 @@ export const botonesPartida = () =>{
 
     const botonNuevaPartida =document.getElementById("nuevaPartida")
     if(botonNuevaPartida !== null && botonNuevaPartida !== undefined && botonNuevaPartida instanceof HTMLButtonElement){
-    botonNuevaPartida?.addEventListener("click", nuevaPartida);
+    botonNuevaPartida.addEventListener("click", nuevaPartida);
     };
 };
 

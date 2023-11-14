@@ -10,5 +10,9 @@ export const sumarPuntuacion = (carta: number) =>{
 };
 
 export const resetPuntuacion = () => {
-    puntuacionInicial = 0;
+    let puntuacion = document.getElementById("puntos")
+    if(puntuacion !== null && puntuacion !== undefined && puntuacion instanceof HTMLElement){
+        puntuacion.innerHTML = "0"
+        puntuacionInicial = 0
+    }
 };
