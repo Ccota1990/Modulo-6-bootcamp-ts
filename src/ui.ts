@@ -132,6 +132,8 @@ const resetCarta = () => {
 
 };
 
+document.addEventListener("DOMContentLoaded", muestraPuntuacion);
+
 export const pideCarta = () => {
     const numeAleatorio = obtenerNumeroAlearorio();
     const carta = dameCarta(numeAleatorio);

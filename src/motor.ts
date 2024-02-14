@@ -1,7 +1,4 @@
-import { muestraPuntuacion,  } from "./ui";
 
-
-document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 
 export const obtenerNumeroAlearorio = () => Math.floor (Math.random()*10)+1;
 
