@@ -1,4 +1,5 @@
-import { mePlanto, nuevaPartida, pideCarta } from "./ui";
+import { mePlanto, nuevaPartida} from "./ui";
+import { pideCarta } from "./motor";
 
 export const botonesPartida = () =>{
     
