@@ -1,5 +1,5 @@
-import { muestraPuntuacion, getUrl, muestraCarta, comprobarPuntuacion } from "./ui";
-import {obtenerValorCarta, sumarPuntuacion} from "./modelo"
+import { muestraPuntuacion,  } from "./ui";
+
 
 document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 
@@ -13,15 +13,4 @@ export const dameCarta = (numeAleatorio: number)  => {
     }
 };
 
-export const pideCarta = () => {
-    const numeAleatorio = obtenerNumeroAlearorio();
-    const carta = dameCarta(numeAleatorio);
-    const url = getUrl(carta);
-    const valorCarta = obtenerValorCarta (carta);
-    muestraCarta(url);
-    sumarPuntuacion(valorCarta);
-    muestraPuntuacion();
-    comprobarPuntuacion();
-
-};
 

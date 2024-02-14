@@ -1,8 +1,10 @@
 import{
+    obtenerValorCarta,
     puntuacionInicial,
     resetPuntuacion,
-    
+    sumarPuntuacion,   
 } from "./modelo"
+import { dameCarta, obtenerNumeroAlearorio } from "./motor";
 
 
 
@@ -130,6 +132,17 @@ const resetCarta = () => {
 
 };
 
+export const pideCarta = () => {
+    const numeAleatorio = obtenerNumeroAlearorio();
+    const carta = dameCarta(numeAleatorio);
+    const url = getUrl(carta);
+    const valorCarta = obtenerValorCarta (carta);
+    muestraCarta(url);
+    sumarPuntuacion(valorCarta);
+    muestraPuntuacion();
+    comprobarPuntuacion();
+
+};
 
 const resetMensaje =() =>{
     let resultado = document.getElementById ("resultado")
